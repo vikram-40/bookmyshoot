@@ -14,6 +14,15 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/test-deployment', function() {
+    return response()->json([
+        'status' => 'success',
+        'message' => 'BookMyShoot is working!',
+        'version' => config('app.version'),
+        'env' => config('app.env'),
+        'debug' => config('app.debug'),
+    ]);
+});
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/gallery/filter', [HomeController::class, 'filterGallery'])->name('gallery.filter');
 Route::get('/packages', [HomeController::class, 'packages'])->name('packages');
